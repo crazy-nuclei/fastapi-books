@@ -18,3 +18,10 @@ def first_api():
 @app.get("/books")
 def get_books():
     return BOOKS
+
+@app.get("/books/{book_title}")
+def get_books(book_title: str):
+    for book in BOOKS: 
+        if book.get("title").casefold() == book_title.casefold():
+            return book
+    return {}
