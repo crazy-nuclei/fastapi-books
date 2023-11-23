@@ -33,3 +33,11 @@ def get_books_by_category(category: str):
         if book.get('category').casefold() == category.casefold():
             books.append(book)
     return books
+
+@app.get("/books/{author}/")
+def get_books_by_author_and_category(author: str, category: str):
+    books = []
+    for book in BOOKS: 
+        if book.get('category').casefold() == category.casefold() and book.get("author").casefold() == author.casefold():
+            books.append(book)
+    return books
