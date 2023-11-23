@@ -25,3 +25,11 @@ def get_books(book_title: str):
         if book.get("title").casefold() == book_title.casefold():
             return book
     return {}
+
+@app.get("/books/")
+def get_books_by_category(category: str):
+    books = []
+    for book in BOOKS: 
+        if book.get('category').casefold() == category.casefold():
+            books.append(book)
+    return books
