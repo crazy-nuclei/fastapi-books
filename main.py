@@ -62,9 +62,9 @@ def update_book(book: BookPost):
         if BOOKS[i].id == book.id: 
             BOOKS[i] = book
 
-@app.delete("/books/{book_title}")
-def delete_book(book_title: str):
+@app.delete("/books/{book_id}")
+def delete_book_by_id(book_id: int):
     for i in range(len(BOOKS)):
-        if BOOKS[i].get("title").casefold() == book_title.casefold():
+        if BOOKS[i].id == book_id:
             BOOKS.pop(i)
             break
