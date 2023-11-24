@@ -1,4 +1,4 @@
-from fastapi import Body, FastAPI
+from fastapi import Body, FastAPI, Path, Query
 from models.Book import Book
 from pydantic_models.Book import BookPost
 
@@ -29,14 +29,14 @@ def get_books_by_author(author: str):
     return books
 
 @app.get("/books/{book_id}")
-def get_book_by_id(book_id: int):
+def get_book_by_id(book_id: int = Path(gt=0)):
     for book in BOOKS: 
         if book.id == book_id:
             return book
     return {}
 
 @app.get("/books/")
-def get_books_by_rating(rating: int):
+def get_books_by_rating(rating: int = Query(ge=1, le=5)):
     books = []
     for book in BOOKS: 
         if book.rating == rating:
