@@ -28,10 +28,10 @@ def get_books_by_author(author: str):
             books.append(book)
     return books
 
-@app.get("/books/{book_title}")
-def get_books(book_title: str):
+@app.get("/books/{book_id}")
+def get_book_by_id(book_id: int):
     for book in BOOKS: 
-        if book.get("title").casefold() == book_title.casefold():
+        if book.id == book_id:
             return book
     return {}
 
