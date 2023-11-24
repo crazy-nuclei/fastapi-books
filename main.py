@@ -1,5 +1,6 @@
 from fastapi import Body, FastAPI
 from models.Book import Book
+from pydantic_models.Book import BookPost
 
 app = FastAPI()
 
@@ -51,8 +52,9 @@ def get_books_by_author_and_category(author: str, category: str):
     return books
 
 @app.post("/books")
-def add_new_book(book=Body()):
-    BOOKS.append(book)
+def add_new_book(book: BookPost):
+    new_book = Book(**book.model_dump())
+    BOOKS.append(new_book)
 
 @app.put("/books")
 def update_book(book=Body()):
