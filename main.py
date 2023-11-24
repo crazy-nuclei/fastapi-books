@@ -57,9 +57,9 @@ def add_new_book(book: BookPost):
     BOOKS.append(new_book)
 
 @app.put("/books")
-def update_book(book=Body()):
+def update_book(book: BookPost):
     for i in range(len(BOOKS)):
-        if BOOKS[i].get("title").casefold() == book.get("title").casefold(): 
+        if BOOKS[i].id == book.id: 
             BOOKS[i] = book
 
 @app.delete("/books/{book_title}")
