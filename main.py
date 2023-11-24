@@ -1,14 +1,14 @@
 from fastapi import Body, FastAPI
+from models.Book import Book
 
 app = FastAPI()
 
 BOOKS = [
-    {'title': 'Title One', 'author': 'Author One', 'category': 'science'},
-    {'title': 'Title Two', 'author': 'Author Two', 'category': 'science'},
-    {'title': 'Title Three', 'author': 'Author Three', 'category': 'history'},
-    {'title': 'Title Four', 'author': 'Author Four', 'category': 'math'},
-    {'title': 'Title Five', 'author': 'Author Five', 'category': 'math'},
-    {'title': 'Title Six', 'author': 'Author Two', 'category': 'math'}
+    Book(1, 'Title One', 'Author One', 'description one', 1),
+    Book(2, 'Title Two', 'Author Two', 'description Two', 2),
+    Book(3, 'Title Three', 'Author Three', 'description Three', 3),
+    Book(4, 'Title Four', 'Author Four', 'description Four', 4),
+    Book(5, 'Title Five', 'Author Five', 'description Five', 5)
 ]
 
 @app.get("/")
