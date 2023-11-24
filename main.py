@@ -36,10 +36,10 @@ def get_book_by_id(book_id: int):
     return {}
 
 @app.get("/books/")
-def get_books_by_category(category: str):
+def get_books_by_rating(rating: int):
     books = []
     for book in BOOKS: 
-        if book.get('category').casefold() == category.casefold():
+        if book.rating == rating:
             books.append(book)
     return books
 
